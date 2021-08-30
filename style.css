@@ -1,0 +1,14 @@
+.row{
+    display:flex;
+    justify-content:center;
+  }
+  
+  .row>*{
+    display:flex;
+    height:200px ;
+    width:200px ;
+    justify-content:center;
+    align-items:center;
+    border: 1px solid black;
+    margin: 10px;
+  }
