@@ -1,14 +1,40 @@
-.row{
-    display:flex;
-    justify-content:center;
-  }
+body{
+background-color: aqua;
+height: 350px;
+background-position: center;
+background-repeat: none;
+background-size: cover;
+
+}
+.row>*{
+  display:block;
+  height:200px ;
+  width:200px ;
+  justify-content:center;
+}
+#page_header{
+  text-align: center;
+  background-color:#3d8888;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+  color: white
+
+}
+
+.left_div{
+  height: 100%; 
+}
+
+.card-body{
+  background-color: #3d8588;
+  color: white;
+}
+
+#searchbtn{
+  background-color: #573d88;
+  color: white;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+  border-radius: 2px; 
   
-  .row>*{
-    display:flex;
-    height:200px ;
-    width:200px ;
-    justify-content:center;
-    align-items:center;
-    border: 1px solid black;
-    margin: 10px;
-  }
+
+}
+  
