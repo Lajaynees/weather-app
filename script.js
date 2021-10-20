@@ -30,9 +30,6 @@ for(let i = 0; i < saved.length; i++){
 let container = document.getElementById("searched_cities_container")
 let cityEl =document.createElement("button")
 cityEl.textContent = city
-cityEl.addEventListener("click",function(){
-console.log("hello")
-})
 container.appendChild(cityEl)
 }
 
@@ -76,6 +73,20 @@ displaySavedCities()
       var tempEl = document.getElementById("today_temp")
 tempEl.textContent = "Temperature: " + data.current.temp + "*F"
 
+var tempEl = document.getElementById("today_humidity")
+humidEl.textContent = "Humidity: " + data.current.humid + "%"
+
+var tempEl = document.getElementById("today_wind_speed")
+windEl.textContent = "Wind Speed: " + data.wind.speed + " MPH"
+
+var tempEl = document.getElementById("today_UV")
+uvEL.textContent = "UV Index: "
+
+
+
+
+
+
 
 
 // Loop for 5 day forecast
@@ -87,4 +98,6 @@ tempEl.textContent = "Temperature: " + data.current.temp + "*F"
 
   //event listner
   submitBtn.addEventListener("click", getWeather)
-//display the Api info(how to go about display)
+  cityEl.addEventListener("click",function(){
+    // console.log("hello")
+    })
