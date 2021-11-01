@@ -1,13 +1,12 @@
-var apiKey = "1084c55f9f5c13f04e61f51385b523c6"
-var submitBtn = document.querySelector("#searchbtn")
-var cityName = document.querySelector("name_of_city");
-var buttonEl = document.querySelector(".btn");
-var fiveDayForecast = document.querySelector("five-day-div");
-var formEl = document.querySelector("#form");
-var currentTemp = document.querySelector("today_temp");
-var currentHumidity = document.querySelector("today_humidity");
-var currentWindSpeed = document.querySelector("today_wind_speed");
-var cities = [];
+// Variables-updated to match new index/css
+var searchButton = $("#submit-button");
+var form = $("#form");
+var date = (".date");
+var timeDateToday = moment().format('dddd, MMMM Do YYYY h:mm a').toString();
+var citiesList = $(".featured-cities");
+var forecastDay = $("#forecast-div");
+var input = $("#form-input"); 
+var searchedCities = [];
 
 function savedCities(cityName){
 
