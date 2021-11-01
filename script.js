@@ -30,6 +30,8 @@ for(let i = 0; i < saved.length; i++){
 let container = document.getElementById("searched_cities_container")
 let cityEl =document.createElement("button")
 cityEl.textContent = city
+cityEl.addEventListener("click",function(){  
+})
 container.appendChild(cityEl)
 }
 
@@ -74,13 +76,16 @@ displaySavedCities()
 tempEl.textContent = "Temperature: " + data.current.temp + "*F"
 
 var humidEl = document.getElementById("today_humidity")
-humidEl.textContent = "Humidity: " + data.current.humid + "%"
+humidEl.textContent = "Humidity: " + data.main.current.humid + "%"
 
 var windEL = document.getElementById("today_wind_speed")
 windEl.textContent = "Wind Speed: " + data.wind.speed + " MPH"
 
 var uvEL = document.getElementById("today_UV")
 uvEL.textContent = "UV Index: "
+
+
+
 
 
 
@@ -99,5 +104,5 @@ uvEL.textContent = "UV Index: "
   //event listner
   submitBtn.addEventListener("click", getWeather)
   cityEl.addEventListener("click",function(){
-    // console.log("hello")
+    
     })
