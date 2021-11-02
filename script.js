@@ -2,7 +2,7 @@
 var searchButton = $("#submit-button");
 var form = $("#form");
 var date = (".date");
-var timeDateToday = moment().format('dddd, MMMM Do YYYY h:mm a').toString();
+var timeDateToday = moment().format("dddd, MMMM Do YYYY h:mm a").toString(),
 var citiesList = $(".featured-cities");
 var forecastDay = $("#forecast-div");
 var input = $("#form-input"); 
@@ -42,108 +42,28 @@ searchButton.on("click", function(event) {
   
   var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&units=metric&uvi?&appid=95d304ea9130c998e905d74bc71292d7";
   
-    // Performing an AJAX request with the queryURL
+
+  }
+   
     $.ajax({
       url: queryURL,
       method: "GET",
       crossDomain: true,
-      dataType: 'jsonp'
+      dataType: "jsonp"
     })
 
-// function savedCities(cityName){
+     // Req / Results w api /Append results
+     .then(function(response) {
+      var cityWeather = JSON.stringify(response);    
 
-// console.log(cityName)
+      var iconCode = response.weather[0].icon;
+      var iconURL = "https://openweathermap.org/img/w/" + iconCode + ".png";
 
+      $(".city-name").html(response.name + " Weather Details:");
+      $(".date").html(timeDateToday);
+      $(".conditions").html("Conditions: " + response.weather[0].main + "<img id='weather-icon' src='" + iconURL + "' alt='Weather icon'>");
+      $(".wind").text("Wind Speed: " + response.wind.speed);
+      $(".humidity").text("Humidity: " + response.main.humidity);
+      $(".temp-C").html("Temperature (°C): " + response.main.temp);
+      }),
 
-// var saved = JSON.parse(localStorage.getItem("saved")) || [];
-// if (localStorage.getItem("saved")) {
-//   saved = JSON.parse(localStorage.getItem("saved"));
-// }
-// if (!saved.includes(cityName)) {
-//   saved.push(cityName);
-//   localStorage.setItem("saved", JSON.stringify(saved));
-// }
-// }
-// function displaySavedCities(){
-//   var saved = JSON.parse(localStorage.getItem("saved")) || [];
-// for(let i = 0; i < saved.length; i++){
-//  let city = saved[i]
-// let container = document.getElementById("searched_cities_container")
-// let cityEl =document.createElement("button")
-// cityEl.textContent = city
-// cityEl.addEventListener("click",function(){  
-// })
-// container.appendChild(cityEl)
-// }
-
-
-// }
-// displaySavedCities()
-
-// // display weather
-//   function getWeather() {
-//     var cityName = document.querySelector("#search_bar").value
-//     var weatherAPI = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey
-    
-//     //fetch using Api and input
-//     fetch(weatherAPI)
-//       .then(function (res) {
-//         return res.json()
-//       })
-//       .then(function (data) {
-//         console.log(data)
-//         getData(data.coord.lat, data.coord.lon, data.name)
-//         //use data to add info to the screen
-
-
-
-//       })
-//       .catch(function (err) {
-//         console.log(err)
-//       })
-//   }
-
-//   // display data
-//   function getData(lat, lon, name) {
-//     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`)
-//     .then(function (res) {
-//       return res.json()
-//     })
-//     .then(function (data) {
-//       console.log(data)
-//       savedCities(name);
-      
-//       var tempEl = document.getElementById("today_temp")
-// tempEl.textContent = "Temperature: " + data.current.temp + "*F"
-
-// var humidEl = document.getElementById("today_humidity")
-// humidEl.textContent = "Humidity: " + data.main.current.humid + "%"
-
-// var windEL = document.getElementById("today_wind_speed")
-// windEl.textContent = "Wind Speed: " + data.wind.speed + " MPH"
-
-// var uvEL = document.getElementById("today_UV")
-// uvEL.textContent = "UV Index: "
-
-
-
-
-
-
-
-
-
-
-
-// // Loop for 5 day forecast
-//     })
-//     .catch(function (err) {
-//       console.log(err)
-//     })
-//   }
-
-//   //event listner
-//   submitBtn.addEventListener("click", getWeather)
-//   cityEl.addEventListener("click",function(){
-    
-//     })
