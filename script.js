@@ -19,7 +19,36 @@ const generateList = function() {
     }
   };
 
+//  function to make list show
+generateList();
 
+var createList = function() {
+  citiesList.empty();
+  for (i = 0; i < searchedCities.length; i++) {
+    citiesList.append(
+      `<li class="list-group-item searched-Cities" id="${searchedCities[i]}">${searchedCities[i]}</li>`
+    );
+  }
+};
+
+createList();
+
+
+//add onclick
+// New API add-using Ajax req w/ queryURL
+searchButton.on("click", function(event) {
+  event.preventDefault();
+  var cityName = input[0].value; 
+  
+  var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&units=metric&uvi?&appid=95d304ea9130c998e905d74bc71292d7";
+  
+    // Performing an AJAX request with the queryURL
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+      crossDomain: true,
+      dataType: 'jsonp'
+    })
 
 // function savedCities(cityName){
 
