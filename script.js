@@ -42,28 +42,36 @@ searchButton.on("click", function(event) {
   
   var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&units=metric&uvi?&appid=95d304ea9130c998e905d74bc71292d7";
   
-
-  }
-   
+    
     $.ajax({
       url: queryURL,
       method: "GET",
       crossDomain: true,
-      dataType: "jsonp"
+      dataType: 'jsonp'
     })
-
-     // Req / Results w api /Append results
-     .then(function(response) {
+      // data back from req-
+      .then(function(response) {
       var cityWeather = JSON.stringify(response);    
 
       var iconCode = response.weather[0].icon;
       var iconURL = "https://openweathermap.org/img/w/" + iconCode + ".png";
 
+      //results
       $(".city-name").html(response.name + " Weather Details:");
       $(".date").html(timeDateToday);
       $(".conditions").html("Conditions: " + response.weather[0].main + "<img id='weather-icon' src='" + iconURL + "' alt='Weather icon'>");
       $(".wind").text("Wind Speed: " + response.wind.speed);
       $(".humidity").text("Humidity: " + response.main.humidity);
       $(".temp-C").html("Temperature (°C): " + response.main.temp);
-      }),
+      });
 
+      // get local storate -set up-function used
+    var citiesTemp = JSON.parse(localStorage.getItem("searchedCities"));
+    citiesTemp.push(cityName);
+   
+    localStorage.setItem("searchedCities", JSON.stringify(citiesTemp));
+   
+    generateList();
+    createList();
+
+});
